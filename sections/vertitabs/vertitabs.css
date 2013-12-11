@@ -1,0 +1,9 @@
+.box {
+	display: none;
+}
+.box.visible {
+	display: block;
+}
+ul.tabs li{
+	cursor: pointer;
+}

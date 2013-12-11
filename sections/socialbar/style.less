@@ -1,0 +1,83 @@
+.section-socialbar{
+	text-align: center;
+	min-height: 50px;
+	font-size: 14px;
+
+  	.icons{
+        margin:5px 0;
+		
+		.menu{
+			display: inline-block;
+
+	        li{
+	            list-style: none;
+	            float: left;
+	            width: 40px;
+	            height: 38px;
+	            display: inline;
+	            background: url( "@{plChildRoot}/sections/socialbar/images/social-bar.png") no-repeat;
+				.border-radius(4px);
+	            a{
+	                display: block;
+	                width: 40px;
+	                height: 38px;
+					.transition(opacity 0.15s ease-in-out);
+	            }
+				
+	            .transition(opacity .2s ease-in-out);
+	            &:hover{
+					.transition(opacity .2s ease-in-out);
+				}
+				
+				&.facebook{
+					background-position: 0 -161px;
+					&:hover{
+						background-position: 0 -200px;
+						}
+					}
+				&.twitter{background-position:          0 -1281px;&:hover{background-position: 0 -1320px;};}
+				&.googleplus{background-position:       0 -401px;&:hover{background-position: 0 -440px;};}
+				&.dribbble{background-position:         0 -81px;&:hover{background-position: 0 -121px;};}
+				&.instagram{background-position:        0 -1761px;&:hover{background-position: 0 -1800px;};}
+	            &.behance{background-position:          0 -1681px;&:hover{background-position: 0 -1720px;};}
+				&.youtube{background-position:          0 -1601px;&:hover{background-position: 0 -1640px;};}
+	            &.digg{&:hover{background-position:     0 -40px;};}
+	            &.flickr{background-position:           0 -241px;&:hover{background-position: 0 -280px;};}
+	            &.forrst{background-position:           0 -321px;&:hover{background-position: 0 -360px;};}
+	            &.html5{background-position:            0 -481px;&:hover{background-position: 0 -520px;};}
+	            &.lastfm{background-position:           0 -561px;&:hover{background-position: 0 -600px;};}
+	            &.linkedin{background-position:         0 -641px;&:hover{background-position: 0 -680px;};}
+	            &.paypal{background-position:           0 -721px;&:hover{background-position: 0 -760px;};}
+	            &.picasa{background-position:           0 -801px;&:hover{background-position: 0 -840px;};}
+	            &.pinterest{background-position:        0 -881px;&:hover{background-position: 0 -920px;};}
+	            &.rss{background-position:              0 -961px;&:hover{background-position: 0 -1000px;};}
+	            &.skype{background-position:            0 -1041px;&:hover{background-position: 0 -1080px;};}
+	            &.stumbleupon{background-position:      0 -1121px;&:hover{background-position: 0 -1160px;};}
+	            &.tumblr{background-position:           0 -1201px;&:hover{background-position: 0 -1240px;};}
+	            &.vimeo{background-position:            0 -1361px;&:hover{background-position: 0 -1400px;};}
+	            &.wordpress{background-position:        0 -1441px;&:hover{background-position: 0 -1480px;};}
+	            &.yahoo{background-position:            0 -1521px;&:hover{background-position: 0 -1560px;};}
+	            
+
+
+	        }
+	    }
+    }
+}
+
+/*****************************************************************************
+** Retina display Images.
+******************************************************************************/
+
+@media screen and (-webkit-min-device-pixel-ratio: 2), 
+screen and (min--moz-device-pixel-ratio: 2), 
+screen and (max-moz-device-pixel-ratio: 2) {
+    .section-socialbar{
+        .menu{
+            li{
+                background: url( "@{plChildRoot}/sections/socialbar/images/social-bar@2x.png") no-repeat;
+                background-size: auto 1840px;
+            }
+        }
+    }
+}

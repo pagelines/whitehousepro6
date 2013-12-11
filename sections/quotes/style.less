@@ -1,0 +1,61 @@
+.quotes {
+	width: 100%;
+
+	.quote-container {
+		padding: 30px;
+		
+		.quote{
+			text-align: center;
+			
+			a{
+				color: #fff;
+				text-transform: uppercase;
+				font-weight: 600;
+			}
+			
+			.quote-content{
+				height: 100%;
+				
+				h5{
+					font-size: 35px;
+					line-height: 40px;
+					padding: 30px 100px 0 100px;
+					color: #fff;
+				}
+				span{
+					font: italic  normal 80px/100% georgia, serif;	
+					position: absolute;
+					top: 30%;
+				}
+				span.left-quote{
+					left: 50px;
+				}
+				span.right-quote{
+					right: 50px;
+				}
+			}
+			
+		}
+	}
+	.rsDefault .rsBullets{
+		top: 20px;
+		background: none;
+	}	
+}
+@media screen and (max-width:500px){
+	.quotes .quote-container .quote .quote-content h5 {
+		font-size: 14px;
+		line-height: 20px;
+		padding: 30px 100px 0 100px;
+	}
+	.quotes .quote-container .quote .quote-content span{
+		font: italic  normal 50px/100% georgia, serif;	
+	}
+	.rsDefault.rsHor .rsArrowRight,
+	.rsDefault.rsHor .rsArrowLeft{
+		.rsArrowIcn{
+			display: none;
+		}
+	}
+}
+	
