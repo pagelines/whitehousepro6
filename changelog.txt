@@ -1,5 +1,0 @@
-*** iBlogPro Changelog ***
-
-6 December 2013 - Version 1.0.1
-	
-	* Initial Release
