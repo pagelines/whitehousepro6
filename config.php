@@ -87,7 +87,7 @@ class PageLinesInstallTheme extends PageLinesInstall{
 			'font_primary'					=> 'open_sans',
 			'base_font_size'				=> 14,
 			'font_primary_weight'			=> 400,
-			'font_headers'					=> 'open_sans',
+			'font_headers'					=> 'brawler',
 			'header_base_size'				=> 16,
 			'font_headers_weight'			=> 300,
 			'region_disable_fixed'			=> 1

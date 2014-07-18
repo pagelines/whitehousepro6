@@ -1,18 +1,18 @@
 <?php
 /*
-	Section: WhiteHouse Header
+	Section: WhiteHousePro Header
 	Author: PageLines
 	Author URI: http://www.pagelines.com
 	Description: A stylized navigation bar with multiple modes and styles.
 	Class Name: WHPHeader
-	Filter: nav
+	Filter: nav,
 */
 
 
 class WHPHeader extends PageLinesSection {
 
 	function section_persistent(){
-		register_nav_menus( array( 'whpheader_nav' => __( 'White House Header Section', 'pagelines' ) ) );
+		register_nav_menus( array( 'iheader_nav' => __( 'iHeader Section', 'pagelines' ) ) );
 
 	}
 
@@ -90,11 +90,6 @@ class WHPHeader extends PageLinesSection {
 				'col'	=> 2,
 				'opts'	=> array(
 					array(
-						'key'	=> 'icon',
-						'label'	=> __( 'Home Icon', 'pagelines' ),
-						'type'	=> 'select_icon'
-					),
-					array(
 						'key'	=> 'iheader_nav_help',
 						'type'	=> 'help_important',
 						'label'	=> __( 'Using styled submenus (multi column drop downs)', 'pagelines' ),
@@ -105,11 +100,6 @@ class WHPHeader extends PageLinesSection {
 						'type'	=> 'select_menu',
 						'label'	=> __( 'Select Menu', 'pagelines' ),
 					),
-					array(
-						'key'	=> 'iheader_search',
-						'type'	=> 'check',
-						'label'	=> __( 'Hide Search?', 'pagelines' ),
-					),	
 				)
 			)
 		);
@@ -148,11 +138,7 @@ class WHPHeader extends PageLinesSection {
 
    		$hide_social = ( $this->opt('iheader_social_disable') ) ? $this->opt('iheader_social_disable') : false;
 
-   		$home_icon = ( $this->opt('icon') ) ? $this->opt('icon') : 'pagelines';
-
 		$menu = ( $this->opt('iheader_menu') ) ? $this->opt('iheader_menu') : false;
-
-		$hide_search = ( $this->opt('iheader_search') ) ? true : false;
 
 		$menu_args = array(
 			'theme_location' => 'iheader_nav',
@@ -163,7 +149,7 @@ class WHPHeader extends PageLinesSection {
 
 	?>
 
-	<div class="row">
+	<div class="row fix">
 
 		<div class="span4 logo">
 
@@ -200,27 +186,10 @@ class WHPHeader extends PageLinesSection {
 		</div>
 	</div>
 
-	<div class="nav-wrap fix">
-
-			<ul class="homebutton">
-				<li>
-					<a href="<?php echo home_url(); ?>" title="<?php bloginfo("name"); ?>">
-						
-						<i class="icon icon-<?php echo $home_icon; ?>"></i>
-					
-					</a>
-				</li>
-			</ul>
-
-			<?php
-
-				echo pl_navigation( $menu_args );
-
-				if( ! $hide_search )
-					printf('<form method="get" class="iheader-searchform pl-searcher" onsubmit="this.submit();return false;" action="%s/" ><fieldset><span class="btn-search"><i class="icon icon-search"></i></span><input type="text" value="" name="s" class="searchfield" /></fieldset></form>', home_url());
-					
-			?>
-
+	<div class="nav-wrap">
+		
+			<?php echo pl_navigation( $menu_args ); ?>
+	
 	</div>
 <?php }
 
