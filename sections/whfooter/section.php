@@ -42,7 +42,7 @@ class WHPFooter extends PageLinesSection {
 				'type'	=> 'link',
 				'url'	=> admin_url( 'widgets.php' ),
 				'title'	=> 'Widgetized Areas Help',
-				'label'		=>	'<i class="icon-retweet"></i> Edit Widgetized Areas',
+				'label'		=>	'<i class="icon icon-retweet"></i> Edit Widgetized Areas',
 				'help'		=> "This section uses widgetized areas that are created and edited in inside your admin.",
 			),
 			array(
@@ -61,7 +61,7 @@ class WHPFooter extends PageLinesSection {
 				'type'	=> 'link',
 				'url'	=> 'http://wordpress.org/extend/plugins/custom-sidebars/',
 				'title'	=> 'Get Custom Sidebars',
-				'label'		=>	'<i class="icon-external-link"></i> Check out plugin',
+				'label'		=>	'<i class="icon icon-external-link"></i> Check out plugin',
 				'help'		=> "We have detected that you don't have the Custom Sidebars plugin installed. We recommend you install this plugin to create custom widgetized areas on demand.",
 			);
 		}
@@ -135,12 +135,12 @@ class WHPFooter extends PageLinesSection {
 					<ul>
 					<?php
 					if($twitter)
-						printf('<li><a href="http://www.twitter.com/%1$s"><i class="icon-twitter"></i> Twitter</i></a></li>', $twitter); 
+						printf('<li><a href="http://www.twitter.com/%1$s"><i class="icon icon-twitter"></i> Twitter</i></a></li>', $twitter); 
 					
 					if($facebook)
-						printf('<li><a href="http://www.facebook.com/%1$s"><i class="icon-facebook"></i> Facebook</i></a></li>', $twitter);
+						printf('<li><a href="http://www.facebook.com/%1$s"><i class="icon icon-facebook"></i> Facebook</i></a></li>', $twitter);
 					
-						printf('<li><a href="%s"><i class="icon-rss"></i> Subscribe</a></li>', get_bloginfo( 'rss2_url' ) );
+						printf('<li><a href="%s"><i class="icon icon-rss"></i> Subscribe</a></li>', get_bloginfo( 'rss2_url' ) );
 					?>
 					</ul>
 						
@@ -211,10 +211,6 @@ class WHPFooter extends PageLinesSection {
 					else: 
 					 ?>
 					<p>Lorem ipsum dolor sit amet elit, consectetur adipiscing. Vestibulum luctus ipsum id quam euismod a malesuada sapien euismot. Vesti bulum ultricies elementum interdum. </p>
-
-					<address>PageLines Inc.<br/>
-					200 Brannan St.<br/>
-					San Francisco, CA 94107</address>
 				<?php endif; ?>
 						
 				</div>
