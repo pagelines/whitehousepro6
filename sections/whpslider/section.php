@@ -14,7 +14,7 @@ class WHPSlider extends PageLinesSection {
 	var $default_limit = 2;
 
 	function section_styles(){
-		wp_enqueue_script( 'flexslider-plugin', $this->base_url.'/jquery.flexslider-min.js', array( 'jquery' ), pl_get_cache_key(), true );
+		wp_enqueue_script( 'flexslider', $this->base_url.'/jquery.flexslider-min.js', array( 'jquery' ), pl_get_cache_key(), true );
 		wp_enqueue_script( 'flexslider-custom', $this->base_url.'/whp.slider.js',  pl_get_cache_key(), true );
 		wp_enqueue_style(  'flexslider-styles', sprintf( '%s/flexslider.css', $this->base_url ), null, pl_get_cache_key() );
 		
