@@ -14,11 +14,9 @@ class WHPSlider extends PageLinesSection {
 	var $default_limit = 2;
 
 	function section_styles(){
-
-		wp_enqueue_script( 'evo-plugins', $this->base_url.'/jquery.evoslider-2.1.4.min.js', array( 'jquery' ), pl_get_cache_key(), true );
-		wp_enqueue_style( 'evo-styles', sprintf( '%s/evoslider.css', $this->base_url ), null, pl_get_cache_key() );
-
-		wp_enqueue_script( 'whpslider', $this->base_url.'/whp.slider.js', null, pl_get_cache_key() );
+		wp_enqueue_script( 'flexslider-plugin', $this->base_url.'/jquery.flexslider-min.js', array( 'jquery' ), pl_get_cache_key(), true );
+		wp_enqueue_script( 'flexslider-custom', $this->base_url.'/whp.slider.js',  pl_get_cache_key(), true );
+		wp_enqueue_style(  'flexslider-styles', sprintf( '%s/flexslider.css', $this->base_url ), null, pl_get_cache_key() );
 		
 	}
 
@@ -77,8 +75,8 @@ class WHPSlider extends PageLinesSection {
 					'label'   => __( 'Slide Text Location', 'pagelines' ),
 					'type'	  => 'select',
 					'opts'	=> array(
-						'partialleft'	=> array('name'=> 'Text On Left (Default)'),
-						'partialright'	=> array('name'=> 'Text On Right'),
+						'slide-left'	=> array('name'=> 'Content On Left (Default)'),
+						'slide-right'	=> array('name'=> 'Content On Right'),
 					)
 				),
                 array(
@@ -108,7 +106,7 @@ class WHPSlider extends PageLinesSection {
 
 		return $options;
 	}
-
+	
 	function slides_output( $whpslider_array ){
 
         $count = 1; 
@@ -129,17 +127,23 @@ class WHPSlider extends PageLinesSection {
 
                     $location = pl_array_get( 'location', $slide ); 
 
-                    $location = ( $location ) ? $location : 'partialleft';   
+                    $location = ( $location ) ? $location : 'slide-left';   
 
                     $link = pl_array_get( 'link', $slide);
 
                     $link_text = pl_array_get( 'link_text', $slide );    
 
+                    $the_img = pl_array_get( 'image', $slide );
+
+                    $the_img = ( $the_img ) ? $the_img : $this->base_url.'/images/default.jpg';
+
+                    $img = sprintf('<div class="slide-image"><img src="%s" alt="%s"></div>', $the_img, $title);  
+
                     $button_color = pl_array_get( 'button_color', $slide );
 
                     $button_color = ( $button_color ) ? $button_color : 'whp-red';  
 
-                    $title = sprintf('<h2 data-sync="whpslider_array_item%s_title">%s</h2>', $count, $title);
+                    $title = sprintf('<h2 data-sync="whpslider_array_item%s_title" class="title">%s</h2>', $count, $title);
 
                     $text = sprintf('<p data-sync="whpslider_array_item%s_text">%s</p>', $count, $text);
 
@@ -149,22 +153,24 @@ class WHPSlider extends PageLinesSection {
                         $link_text = '';
                     };
 
-                    $content = sprintf(
-                        '<div data-sync="whpslider_array_item%s" class="evoText">
-                            <div class="evoText-inner"> 
-                                %s %s %s
+                    $description = sprintf(
+                        '<div class="slide-description">
+                        	<div class="ray">
+                            %s %s %s
                             </div>
-                        </div>', $count, $title, $text, $link_text);
+                        </div>',
+                        $title, 
+                        $text, 
+                        $link_text
+                    );
 
                     $output .= sprintf(
-                        '<dt>slide %s</dt>
-                        <dd data-src="%s" data-text="%s" class="ray">
-                        	%s
-                        </dd>',
-                        $count,
-                        $the_img,
+                        '<li class="%s">
+                            %s %s
+                        </li>',
                         $location,
-                        $content
+                        $description,
+                        $img
                     );
                 
                 }
@@ -177,7 +183,8 @@ class WHPSlider extends PageLinesSection {
         return $output;    
     }
 
-	function section_template( ) {
+
+    function section_template( ) {
 
         $whpslider_autoplay = ( $this->opt('autoplay') ) ? 'true' : 'false';
 
@@ -193,9 +200,9 @@ class WHPSlider extends PageLinesSection {
                 array(
                     'image'         => $this->base_url . '/images/default.jpg',
                     'button_color'  => 'whp-red',
-                    'location'		=> 'partialleft',
+                    'location'		=> 'slide-left',
                     'title'         => 'WhiteHousePro Slider',
-                    'text'          => 'Congrats! You have successfully installed this slider.<br /> Now just set it up.',
+                    'text'          => 'Congrats! <br /> You have successfully installed this slider.<br /> Now just set it up.',
                     'link'          => 'http://www.pagelines.com/',
                     'link_text'     => 'Visit PageLines.com'
                 ),
@@ -207,19 +214,22 @@ class WHPSlider extends PageLinesSection {
 
 
         printf('
-            <div class="pl-area-wrap whp-slider-wrap row fix" data-autoplay="%s" data-speed="%s">
-				<div class="whp-slider evoslider span12">
-					<dl>
+            <div class="pl-area-wrap whp-slider-wrap">
+				<div class="whp-slider flexslider">
+            		<ul class="slides">
                     	%s
-                    </dl>
-                </div>
-            </div>',
-            $whpslider_autoplay,
-            $whpslider_speed,
+                    </ul>
+	            </div>
+			</div>',
             $whpslides
-
         );
             
 
 	}
+
+
+
+    
+
+
 }
