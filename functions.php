@@ -11,9 +11,9 @@ require_once( 'dms/functions.php' );
 add_filter ( 'pagelines_foundry', 'whitehousepro_google_fonts' );
 
 function whitehousepro_google_fonts($fonts){
-    $fonts['whitehousepro-Brawler'] = array(
-	'name' => 'Brawler',
-	'family' => 'Brawler, serif',
+    $fonts['whitehousepro-playfair'] = array(
+	'name' => 'Payfair Display',
+	'family' => 'Payfair Display, serif',
 	'web_safe' => false,
 	'google' => false,
 	'monospace' => false,
