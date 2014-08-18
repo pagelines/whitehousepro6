@@ -4,27 +4,25 @@
         
         $('.whp-slider-wrap').each(function(){
             
-             var theAnimation = $(this).data('animation')
-            ,   theAutoplay = $(this).data('autoplay') || 12000
-            ,   theSpeed = $(this).data('speed') || 500
-            ,   theTouch = $(this).data('touch') || "off" 
+             var whpSliderAutoplay = $(this).data('autoplay')
+            ,   whpSliderSpeed = $(this).data('speed') || 4000
             
-            var whpSlider = $(this).find('.flexslider').flexslider({
+            var whpSlider = $(this).find('.whp-slider').flexslider({
 
                 animation: "fade",
-                slideshow: false,
-                slideshowSpeed: 7000,
-                animationSpeed: 1000,
+                slideshow: whpSliderAutoplay,
+                slideshowSpeed: whpSliderSpeed,
+                animationSpeed: 500,
                 touch:  true,
                 directionNav: true,
-                prevText: "<i class\"icon icon-chevron-left\"></i>",
-                nextText: "<i class\"icon icon-chevron-right\"></i>",
                 controlNav: true,
-                keyboardNav: true
+                keyboardNav: true,
                 
             })
 
-        });   
+        }); 
+
+        
         
     })
 

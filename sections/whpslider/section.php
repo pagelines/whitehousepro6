@@ -14,7 +14,7 @@ class WHPSlider extends PageLinesSection {
 	var $default_limit = 2;
 
 	function section_styles(){
-		wp_enqueue_script( 'flexslider', $this->base_url.'/jquery.flexslider-min.js', array( 'jquery' ), pl_get_cache_key(), true );
+        wp_enqueue_script( 'flexslider', PL_JS . '/script.flexslider.js', array( 'jquery' ), pl_get_cache_key(), true );
 		wp_enqueue_script( 'flexslider-custom', $this->base_url.'/whp.slider.js',  pl_get_cache_key(), true );
 		wp_enqueue_style(  'flexslider-styles', sprintf( '%s/flexslider.css', $this->base_url ), null, pl_get_cache_key() );
 		
@@ -96,9 +96,7 @@ class WHPSlider extends PageLinesSection {
                     'default'   => 'whp-red',
                     'opts'      => array(
                         'whp-red'    => array('name'=> 'Red'),
-                        'whp-silver' => array('name'=> 'Silver'),
-                        'whp-cyan'   => array('name'=> 'Cyan'),
-                        'whp-yellow' => array('name'=> 'Yellow'),                        
+                        'whp-silver' => array('name'=> 'Silver'),                   
                     )
                 ),
             )
@@ -155,9 +153,7 @@ class WHPSlider extends PageLinesSection {
 
                     $description = sprintf(
                         '<div class="slide-description">
-                        	<div class="ray">
                             %s %s %s
-                            </div>
                         </div>',
                         $title, 
                         $text, 
@@ -214,13 +210,15 @@ class WHPSlider extends PageLinesSection {
 
 
         printf('
-            <div class="pl-area-wrap whp-slider-wrap">
+            <div class="pl-area-wrap whp-slider-wrap" data-autoplay="%s" data-speed="%s">
 				<div class="whp-slider flexslider">
             		<ul class="slides">
                     	%s
                     </ul>
 	            </div>
 			</div>',
+            $whpslider_autoplay,
+            $whpslider_speed,
             $whpslides
         );
             

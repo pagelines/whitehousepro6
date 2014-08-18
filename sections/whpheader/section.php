@@ -93,7 +93,7 @@ class WHPHeader extends PageLinesSection {
 						'key'	=> 'iheader_nav_help',
 						'type'	=> 'help_important',
 						'label'	=> __( 'Using styled submenus (multi column drop downs)', 'pagelines' ),
-						'help'	=> __( 'Want full width, multi column "mega menu" or "Panel Menu"? Simply add a class of "megamenu" or "panelmenu" to the list items using the WP menu creation tool.', 'pagelines' )
+						'help'	=> __( 'Want multi column "mega menu" or "Panel Menu"? Simply add a class of "megamenu" or "panelmenu" to the list items using the WP menu creation tool.<br /> Add a <span> tag to make text italic on menu items', 'pagelines' )
 					),
 					array(
 						'key'	=> 'iheader_menu',
