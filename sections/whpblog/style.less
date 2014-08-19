@@ -1,12 +1,14 @@
 .section-whpblog{
 	
+	.pl-section-pad{
+		padding: 0!important;
+	}
+	
 	article,
 	.meta{
 		overflow: hidden; 
 		color: #000;
 		background: #fff;
-		box-shadow: 0 1px 4px rgba(0,0,0,.3);
-		border-radius: 4px;
 		margin-bottom: 20px;
 		padding: 20px 60px; 
 		.metamedia{
@@ -15,8 +17,7 @@
 				width: 100% !important;
 			}
 		}
-		
-
+	
 		.post-header{
 			.title{
 				margin: 0 0 10px 0;
@@ -40,7 +41,7 @@
 					content: "/";
 				}
 
-				&:last-child &:after{
+				&:last-child:after{
 					content: none;
 				}
 				
@@ -64,7 +65,7 @@
 			}	
 		}
 		.the-footer{
-			border-top: 1px dashed #b3b3b3;
+			border-top: 1px solid #e6e6e6;
 			padding-top: 20px;
 			.read-more{
 				text-align: center;

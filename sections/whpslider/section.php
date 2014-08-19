@@ -81,17 +81,37 @@ class WHPSlider extends PageLinesSection {
 				),
                 array(
                     'key'   => 'link',
-                    'label' => __( 'Button Link (Optional)', 'pagelines' ),
+                    'label' => __( 'Primary Button Link (Optional)', 'pagelines' ),
                     'type' 	=> 'text'
                 ),
                 array(
                     'key'  	=> 'link_text',
-                    'label'	=> __( 'Button Text', 'pagelines' ),
+                    'label'	=> __( 'Primary Button Text', 'pagelines' ),
                     'type'  => 'text'
                 ),
                 array(
                     'key'       => 'button_color',
-                    'label'     => __( 'Button Style', 'pagelines' ),
+                    'label'     => __( 'Primary Button Style', 'pagelines' ),
+                    'type'      => 'select',
+                    'default'   => 'whp-red',
+                    'opts'      => array(
+                        'whp-red'    => array('name'=> 'Red'),
+                        'whp-silver' => array('name'=> 'Silver'),                   
+                    )
+                ),
+                array(
+                    'key'   => 'link2',
+                    'label' => __( 'Secondary Button Link (Optional)', 'pagelines' ),
+                    'type'  => 'text'
+                ),
+                array(
+                    'key'   => 'link_text2',
+                    'label' => __( 'Secondary Button Text', 'pagelines' ),
+                    'type'  => 'text'
+                ),
+                array(
+                    'key'       => 'button_color2',
+                    'label'     => __( 'Secondary Button Style', 'pagelines' ),
                     'type'      => 'select',
                     'default'   => 'whp-red',
                     'opts'      => array(
@@ -129,7 +149,11 @@ class WHPSlider extends PageLinesSection {
 
                     $link = pl_array_get( 'link', $slide);
 
-                    $link_text = pl_array_get( 'link_text', $slide );    
+                    $link_text = pl_array_get( 'link_text', $slide ); 
+
+                    $link2 = pl_array_get( 'link2', $slide);
+
+                    $link_text2 = pl_array_get( 'link_text2', $slide );    
 
                     $the_img = pl_array_get( 'image', $slide );
 
@@ -141,6 +165,10 @@ class WHPSlider extends PageLinesSection {
 
                     $button_color = ( $button_color ) ? $button_color : 'whp-red';  
 
+                    $button_color2 = pl_array_get( 'button_color2', $slide );
+
+                    $button_color2 = ( $button_color2 ) ? $button_color2 : 'whp-silver';  
+
                     $title = sprintf('<h2 data-sync="whpslider_array_item%s_title" class="title">%s</h2>', $count, $title);
 
                     $text = sprintf('<p data-sync="whpslider_array_item%s_text">%s</p>', $count, $text);
@@ -151,13 +179,20 @@ class WHPSlider extends PageLinesSection {
                         $link_text = '';
                     };
 
+                    if( $link2 ){
+                        $link_text2 = sprintf('<a data-sync="whpslider_array_item%s_link_text2" href="%s" class="whp-btn %s">%s <i class="icon icon-angle-double-right"></i></a>', $count, $link2, $button_color2, $link_text2);
+                    } else { 
+                        $link_text2 = '';
+                    };
+
                     $description = sprintf(
                         '<div class="slide-description">
-                            %s %s %s
+                            %s %s %s %s
                         </div>',
                         $title, 
                         $text, 
-                        $link_text
+                        $link_text,
+                        $link_text2
                     );
 
                     $output .= sprintf(
