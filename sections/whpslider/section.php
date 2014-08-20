@@ -113,7 +113,7 @@ class WHPSlider extends PageLinesSection {
                     'key'       => 'button_color2',
                     'label'     => __( 'Secondary Button Style', 'pagelines' ),
                     'type'      => 'select',
-                    'default'   => 'whp-red',
+                    'default'   => 'whp-silver',
                     'opts'      => array(
                         'whp-red'    => array('name'=> 'Red'),
                         'whp-silver' => array('name'=> 'Silver'),                   
