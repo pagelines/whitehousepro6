@@ -3,7 +3,7 @@
 	Section: WhiteHousePro Notibar
 	Author: PageLines
 	Author URI: http://www.pagelines.com
-	Description: A simple optimization tool that allows you to show the right message at the right time to your website visitors
+	Description: An optimization tool that allows you to show the right message at the right time to your website visitors.
 	Class Name: WHPNotibar
 	Filter: component, full-width
 */

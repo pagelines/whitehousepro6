@@ -3,14 +3,26 @@
 	Section: WhiteHousePro Footer
 	Author: PageLines
 	Author URI: http://www.pagelines.com
-	Description:
+	Description: WhiteHousePro stylized footer area with enhanced social icons and widgets.
 	Class Name: WHPFooter
 */
 
 class WHPFooter extends PageLinesSection {
-
 	
 	function section_opts(){
+
+		$social_urls = array(); 
+	
+		$social_icons = $this->social_icons();
+		
+		foreach($social_icons as $icon){
+			$social_urls[] = array(
+				'label'	=> ui_key($icon) . ' URL', 
+				'key'	=> 'whpfooter_'.$icon,
+				'type'	=> 'text',
+				'scope'	=> 'global',
+			); 
+		}
 
 		$nav_options = array(); 
 		
@@ -37,19 +49,21 @@ class WHPFooter extends PageLinesSection {
 		$options = array(
 
 			array(
-				'type' 			=> 'multi',
-				'title' 		=> __( 'Breadcrumbs', 'pagelines' ),
-				'opts'			=> array(			
+				'type'	=> 'multi',
+				'key'	=> 'whpfooter_social',
+				'title'	=> __( 'Social Icons', 'pagelines' ),
+				'col'	=> 1,
+				'opts'	=> array(
 					array(
-						'key'		=> 'breadcrumbs_icon',
-						'label'		=> __( 'Breadcrumbs Icon', 'pagelines' ),
-						'type'		=> 'select_icon',
-						'default' 	=> 'pagelines'
+						'type'	=> 'multi',
+						'key'	=> 'whpfooter_social_urls', 
+						'title'	=> 'Link URLs',
+						'opts'	=> $social_urls,
 					),
 					array(
 						'type'		=> 'check',
-						'key'		=> 'footer_top_disable',
-						'label'		=> __( 'Hide Breadcrumbs & Navigation areas?', 'pagelines' ),
+						'key'		=> 'whpfooter_social_disable',
+						'label'		=> __( 'Hide Social Icons?', 'pagelines' ),
 						'default'	=> false
 					),
 				)
@@ -61,8 +75,6 @@ class WHPFooter extends PageLinesSection {
 				'title' 		=> __( 'Navigation Columns', 'pagelines' ),
 				'opts'			=> $nav_options,
 			),
-			
-
 
 		 	array(
 				'type' 			=> 'multi',
@@ -91,16 +103,34 @@ class WHPFooter extends PageLinesSection {
 
 	}
 	
+	function social_icons( ){
+		
+		$social_icons = array(
+			'facebook',
+			'linkedin',
+			'instagram',
+			'twitter',
+			'youtube',
+			'google-plus',
+			'pinterest',
+			'dribbble',
+			'flickr',
+			'github',
+		); 
+		
+		return $social_icons;
+		
+	}
 	
    function section_template() { 
 
-		$breadcrumbs_icon = ( $this->opt('breadcrumbs_icon') ) ? $this->opt('breadcrumbs_icon') : 'pagelines';
+   		$social_icons = $this->social_icons(); 
 
-		$hide_footer_top = ( $this->opt('footer_top_disable') ) ? $this->opt('footer_top_disable') : false;
+   		$hide_social = ( $this->opt('whpfooter_social_disable') ) ? $this->opt('whpfooter_social_disable') : false;
 		
 		$tagline = ( $this->opt('tagline') ) ? $this->opt('tagline') : 'Designed by PageLines in California.';
 		
-		$copy = ( $this->opt('copy') ) ? $this->opt('copy') : 'Copyright &copy; 2014 iBlogPro All rights reserved.';
+		$copy = ( $this->opt('copy') ) ? $this->opt('copy') : 'Copyright &copy; 2014 | 123 Market St. San Francisco, CA 94111 |';
 		
 		
 		$cols = array(); 
@@ -134,40 +164,60 @@ class WHPFooter extends PageLinesSection {
 	?>
 	
 
-		<?php if( '1' !== $hide_footer_top ): ?>
-
-				<div class="row fix pl-shadow-wrap">
-					<div class="span4">
-						<?php 
-						
-							$title = ( $cols[1]['title'] ) ? $cols[1]['title'] : __('Pages','pagelines'); 
-							$menu = ( $cols[1]['menu'] ) ? $cols[1]['menu'] : pl_list_pages(); 
-							
-							echo pl_media_list( $title, $menu ); 
-						?>
-						
-					</div>
-					<div class="span4">
-						<?php 
-						
-							$title = ( $cols[2]['title'] ) ? $cols[2]['title'] : __('Categories','pagelines'); 
-							$menu = ( $cols[2]['menu'] ) ? $cols[2]['menu'] : pl_popular_taxonomy(); 
-							
-							echo pl_media_list( $title, $menu ); 
-						?>
-					</div>
-					<div class="span4">
-						<?php 
-						
-							$title = ( $cols[3]['title'] ) ? $cols[3]['title'] : __('Tags','pagelines'); 
-							$menu = ( $cols[3]['menu'] ) ? $cols[3]['menu'] : pl_popular_taxonomy( 6, 'post_tag'); 
-							
-							echo pl_media_list( $title, $menu ); 
-						?>
-					</div>
+		<?php if( '1' !== $hide_social ): ?>
+			<div class="icons row fix">
+				<?php 
+				
+				foreach($social_icons as $icon){
+				
+					$url = ( pl_setting('whpfooter_'.$icon) ) ? pl_setting('whpfooter_'.$icon) : false;
+				
+					if( $url )
+						printf('<a href="%s" class="whpfooter-link" target="_blank"><i class="icon icon-%s"></i></a>', $url, $icon); 
+				}
+			
+				?>
 			</div>
-
 		<?php endif; ?>
+		<div class="row fix pl-shadow-wrap">
+				<div class="span3">
+					<?php 
+					
+						$title = ( $cols[1]['title'] ) ? $cols[1]['title'] : __('Pages','pagelines'); 
+						$menu = ( $cols[1]['menu'] ) ? $cols[1]['menu'] : pl_list_pages(); 
+						
+						echo pl_media_list( $title, $menu ); 
+					?>
+					
+				</div>
+				<div class="span3">
+					<?php 
+					
+						$title = ( $cols[2]['title'] ) ? $cols[2]['title'] : __('Categories','pagelines'); 
+						$menu = ( $cols[2]['menu'] ) ? $cols[2]['menu'] : pl_popular_taxonomy(); 
+						
+						echo pl_media_list( $title, $menu ); 
+					?>
+				</div>
+				<div class="span3">
+					<?php 
+					
+						$title = ( $cols[3]['title'] ) ? $cols[3]['title'] : __('Tags','pagelines'); 
+						$menu = ( $cols[3]['menu'] ) ? $cols[3]['menu'] : pl_popular_taxonomy( 6, 'post_tag'); 
+						
+						echo pl_media_list( $title, $menu ); 
+					?>
+				</div>
+				<div class="span3">
+					<?php 
+					
+						$title = ( $cols[3]['title'] ) ? $cols[4]['title'] : __('Pages','pagelines'); 
+						$menu = ( $cols[3]['menu'] ) ? $cols[4]['menu'] : pl_list_pages(); 
+						
+						echo pl_media_list( $title, $menu ); 
+					?>
+				</div>
+		</div>
 
 		<div class="whpfooter-bottom">
 			<p>

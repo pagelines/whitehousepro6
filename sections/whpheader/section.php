@@ -3,7 +3,7 @@
 	Section: WhiteHousePro Header
 	Author: PageLines
 	Author URI: http://www.pagelines.com
-	Description: A stylized navigation bar with multiple modes and styles.
+	Description: A stylized header with logo, search bar and navigation.
 	Class Name: WHPHeader
 	Filter: nav,
 */

@@ -3,7 +3,7 @@
 	Section: WhiteHousePro Quotes
 	Author: PageLines
 	Author URI: http://www.pagelines.com
-	Description: A professional and versatile slider section. Can be customized with several transitions and a large number of slides.
+	Description: A versatile quotes section with multiple options.
 	Class Name: WHPQuotes
 	Filter: slider
 */

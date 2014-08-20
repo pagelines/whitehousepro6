@@ -3,7 +3,7 @@
 	Section: WhiteHousePro Blog
 	Author: PageLines
 	Author URI: http://www.pagelines.com
-	Description: A simple professional blog.
+	Description: A WhiteHousePro themed blog.
 	Class Name: WHPBlog
 	Filter: format
 */

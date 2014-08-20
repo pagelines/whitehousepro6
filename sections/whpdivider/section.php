@@ -3,7 +3,7 @@
 	Section: WhiteHousePro Divider
 	Author: PageLines
 	Author URI: http://www.pagelines.com
-	Description: A simple content/full width page divider.
+	Description: A simple content/full width section divider.
 	Class Name: WHPDivider
 	Filter: dual-width, miscellaneous
 */

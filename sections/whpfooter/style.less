@@ -1,7 +1,8 @@
 .section-whpfooter{
 
 	border-top: 3px double #951a1b;
-	
+	font-size:11px;
+
 	.pl-section-pad{
 		border-top: 2px solid transparent;
 		background: url(@{plChildRoot}/sections/whpfooter/shadow.png) no-repeat top center;
@@ -10,6 +11,32 @@
 			background: url(@{plChildRoot}/sections/whpfooter/shadow2.png) no-repeat bottom center;
 		}
 	}
+
+	a{
+		color: @pl-text;
+		opacity: .5;
+		&:hover{
+			color: @pl-link;
+			opacity: 1;
+		}
+	}
+
+	.icons{
+		text-align: center;
+		margin: 20px 0; 
+		.whpfooter-link{
+			font-size: 22px;
+			line-height: 22px;
+			margin: 0 8px;
+			color: @pl-text;
+			opacity: .5;
+			&:hover{
+				opacity: 1;
+				color: @pl-link;
+			}
+		}		
+	}
+
 	.whpfooter-bottom{
 		text-align: center;
 	}

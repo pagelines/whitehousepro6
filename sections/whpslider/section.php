@@ -3,7 +3,7 @@
 	Section: WhiteHousePro Slider
 	Author: PageLines
 	Author URI: http://www.pagelines.com
-	Description: A professional and versatile slider section. Can be customized with several transitions and a large number of slides.
+	Description: A professional slider section that can be customized with a large number of slides.
 	Class Name: WHPSlider
 	Filter: slider
 */
