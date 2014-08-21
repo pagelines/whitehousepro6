@@ -6,9 +6,17 @@
 
 	.whpfp-content{
 		background: #fff; 
-		padding: 10px 15px;
+		padding: 15px;
+		
 
 		.whpfp-image{
+			.metamedia{
+				.wp-video, 
+				.wp-video .mejs-video{
+					width: 100% !important;
+				}
+			}
+			
 			display: inline-block;
 			img{
 				max-width: 100%;
@@ -21,25 +29,28 @@
 				cursor: pointer;
 			}
 		}
-		h3{
-			font-size: 24px;
-			margin: 0;
-			padding: 14px 0 0 0;
-		}
-		.whpfp-meta{
-			font-size: 14px;
-			color: #939393;
-			padding-bottom: 14px;
-		}
-		.whpfp-excerpt{
-			p{
-				padding-bottom: 14px;
-				margin: 0; 
-				float: left;
+		.whpfp-text{
+
+			h3{
+				font-size: 24px;
+				margin: 0;
+				padding: 12px 0 0 0;
 			}
-			a.read-more{
-				display: inherit;
-				font-style: italic;
+			.whpfp-meta{
+				font-size: 14px;
+				color: #939393;
+				padding: 0 0 14px 0;
+			}
+			.whpfp-excerpt{
+				p{
+					padding: 0 0 14px 0;
+					margin: 0; 
+					float: left;
+				}
+				a.read-more{
+					display: inherit;
+					font-style: italic;
+				}
 			}
 		}
 		

@@ -41,7 +41,7 @@ class WHPFlexiblePosts extends PageLinesSection {
 				array(
 					'key'			=> $this->id.'_whp_total',
 					'type' 			=> 'count_select',
-					'count_start'	=> 5,
+					'count_start'	=> 3,
 					'count_number'	=> 20,
 					'default'		=> 10,
 					'label' 		=> __( 'Total Posts Loaded', 'pagelines' ),
@@ -222,6 +222,7 @@ class WHPFlexiblePosts extends PageLinesSection {
 
 				<div class="whpfp-content">
 					<div class="whpfp-image fix">
+
 						<a href="<?php echo $permalink; ?>">
 						<?php
 						if ( has_post_thumbnail() )
@@ -231,9 +232,9 @@ class WHPFlexiblePosts extends PageLinesSection {
 
 							?>
 						</a>
-					</div><!--work-item-->
+					</div><!--end .whpfp-image-->
 
-					<div class="whpfp-content fix">
+					<div class="whpfp-text fix">
 						<h3>
 							<a href="<?php echo $permalink; ?>">
 							<?php the_title(); ?>
