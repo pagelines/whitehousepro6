@@ -6,6 +6,7 @@ body.admin-bar .whpnotibar{
 /* Theme Headings */
 h1, h2, h3, h4, h5, h6{
 	font-weight: normal;
+	font-family: @headingsFontFamily;
 }
 
 /* Theme Colors */
@@ -25,14 +26,8 @@ h1, h2, h3, h4, h5, h6{
 	&.whp-blue{
 	    background-color: #0F4F89; 
 	}
-	&.whp-yellow{
-	    background-color: #ffc74a; 
-	}
 	&.whp-silver{
 	    background-color: #f9f9f9; 
-	}
-	&.whp-cyan{
-	    background-color: #82cff1;
 	}	
 }
 
@@ -62,14 +57,6 @@ h1, h2, h3, h4, h5, h6{
 	    	background: #ca2129; 
 	    }
 	}
-	&.whp-yellow{
-		background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #e5aa29), color-stop(1, #ffc74a));
-	    background-image: -moz-linear-gradient(center bottom, #e5aa29 0%,  #ffc74a 100%);
-	    background-color: #ffc74a; /* Fallback */
-	    &:hover, &:focus,&:active{
-	    	background: #ffc74a;
-	    }
-	}
 	&.whp-silver{
 		color: #0F4F89;
 		background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d2d2d2), color-stop(1, #f9f9f9));
@@ -78,17 +65,14 @@ h1, h2, h3, h4, h5, h6{
 	    &:hover, &:focus,&:active{
 	    	background: #f9f9f9;
 	    }
-	}
-	&.whp-cyan{
-	    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #3aa9e2), color-stop(1, #82cff1));
-	    background-image: -moz-linear-gradient(center bottom, #3aa9e2 0%,  #82cff1 100%);
-	    background-color: #82cff1; /* Fallback */
-	    &:hover, &:focus,&:active{
-	    	background: #82cff1;
-	    }
-	}		
+	}	
 }
 
+.section-widgetizer{
+	.widget .widgetttitle{
+		font-family: @headingsFontFamily;
+	}
+}
 /*
  * Responsive
  ***********************/ 
