@@ -73,6 +73,7 @@ class WHPFooter extends PageLinesSection {
 			array(
 				'type' 			=> 'multi',
 				'title' 		=> __( 'Navigation Columns', 'pagelines' ),
+				'col'			=> 2,
 				'opts'			=> $nav_options,
 			),
 
@@ -130,7 +131,7 @@ class WHPFooter extends PageLinesSection {
 		
 		$tagline = ( $this->opt('tagline') ) ? $this->opt('tagline') : 'Designed by PageLines in California.';
 		
-		$copy = ( $this->opt('copy') ) ? $this->opt('copy') : 'Copyright &copy; 2014 | 123 Market St. San Francisco, CA 94111 |';
+		$copy = ( $this->opt('copy') ) ? $this->opt('copy') : 'Copyright &copy; 2014 | 1600 Pennsylvania Ave NW, Washington, DC 20500 |';
 		
 		
 		$cols = array(); 

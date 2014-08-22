@@ -106,13 +106,6 @@ class WHPHeader extends PageLinesSection {
 
 		$menu = ( $this->opt('whpheader_menu') ) ? $this->opt('whpheader_menu') : false;
 
-		$menu_args = array(
-			'theme_location' => 'whpheader_nav',
-			'menu' => $menu,
-			'menu_class'	=> 'inline-list pl-nav sf-menu',
-			
-		);
-
 	?>
 
 	<div class="row fix">
@@ -136,7 +129,18 @@ class WHPHeader extends PageLinesSection {
 
 	<div class="nav-wrap">
 		
-			<?php echo pl_navigation( $menu_args ); ?>
+			<?php 
+
+			$menu_args = array(
+				'theme_location' => 'whpheader_nav',
+				'menu' => $menu,
+				'menu_class'	=> 'inline-list pl-nav sf-menu',
+				
+			);
+
+			echo pl_navigation( $menu_args ); 
+
+			?>
 	
 	</div>
 <?php }

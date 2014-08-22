@@ -246,7 +246,7 @@ class WHPFlexiblePosts extends PageLinesSection {
 					
 						<?php if( $show_excerpt ): ?>
 						<div class="whpfp-excerpt">
-							<?php the_excerpt();?>
+							<?php the_excerpt(20);?>
 							<a href="<?php echo $permalink; ?>" class="read-more">Continue Reading...</a>
 						</div>
 						<?php endif;?>

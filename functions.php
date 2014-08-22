@@ -5,6 +5,11 @@
 define( 'DMS_CORE', true );
 require_once( 'dms/functions.php' );
 
+/* Excerpt length */
+function whp_excerpt_length($length) {
+	return 34;
+}
+add_filter('excerpt_length', 'whp_excerpt_length');
 
 /* Add Google Font to option panel */
 
