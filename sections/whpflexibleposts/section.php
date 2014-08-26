@@ -136,7 +136,7 @@ class WHPFlexiblePosts extends PageLinesSection {
 
 		global $post;
 
-		$show_excerpt = $this->opt( $this->id . '_whp_excerpt', array( 'default' => false ) );
+		$show_excerpt = $this->opt( $this->id . '_whp_excerpt', array( 'default' => true ) );
 
 		$post_type = $this->opt( $this->id.'_whp_post_type', array( 'default' => 'post' ) );
 
