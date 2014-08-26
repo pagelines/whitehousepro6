@@ -212,8 +212,8 @@ class WHPFooter extends PageLinesSection {
 				<div class="span3">
 					<?php 
 					
-						$title = ( $cols[3]['title'] ) ? $cols[4]['title'] : __('Pages','pagelines'); 
-						$menu = ( $cols[3]['menu'] ) ? $cols[4]['menu'] : pl_list_pages(); 
+						$title = ( $cols[4]['title'] ) ? $cols[4]['title'] : __('Pages','pagelines'); 
+						$menu = ( $cols[4]['menu'] ) ? $cols[4]['menu'] : pl_list_pages(); 
 						
 						echo pl_media_list( $title, $menu ); 
 					?>
