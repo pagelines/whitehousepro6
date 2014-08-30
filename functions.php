@@ -16,27 +16,9 @@ add_filter('excerpt_length', 'whp_excerpt_length');
 add_filter ( 'pagelines_foundry', 'whitehousepro_google_fonts' );
 
 function whitehousepro_google_fonts($fonts){
-    $fonts['whitehousepro-playfair'] = array(
-	'name' => 'Payfair Display',
-	'family' => 'Payfair Display, serif',
-	'web_safe' => false,
-	'google' => false,
-	'monospace' => false,
-	'free' => true
-	);
-
-	$fonts['whitehousepro-PT-sans'] = array(
-	'name' => 'PT Sans',
-	'family' => 'PT Sans, sans-serif',
-	'web_safe' => false,
-	'google' => false,
-	'monospace' => false,
-	'free' => true
-	);
-
-	$fonts['whitehousepro-PT-serif'] = array(
-	'name' => 'PT Serif',
-	'family' => 'PT Serif, serif',
+    $fonts['whitehousepro-domine'] = array(
+	'name' => 'Domine Display',
+	'family' => 'Domine Display, serif',
 	'web_safe' => false,
 	'google' => false,
 	'monospace' => false,

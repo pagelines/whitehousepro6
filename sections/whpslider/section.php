@@ -49,7 +49,7 @@ class WHPSlider extends PageLinesSection {
             'key'       => 'whpslider_array',
             'type'      => 'accordion', 
             'col'       => 2,
-            'title'     => __('WhiteHousePro Setup', 'pagelines'), 
+            'title'     => __('Slider Setup', 'pagelines'), 
             'post_type' => __('Slide', 'pagelines'), 
             'opts'  => array(
                 array(
