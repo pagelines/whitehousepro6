@@ -29,7 +29,6 @@ class PageLinesInstallTheme extends PageLinesInstall{
 			$content = array(
 				array(
 					'object'	=> 'PageLinesPostLoop',
-	
 				)
 			);
 			
@@ -54,14 +53,19 @@ class PageLinesInstallTheme extends PageLinesInstall{
 			'footer'	=> array(
 				array(
 					'content'	=> array(
-						array( 'object'	=> 'iFooter' ),
+						array( 'object'	=> 'WHPFooter' ),
 					)
 				)
 			),
 			'header'	=> array(
 				array(
+					'settings'	=> array(
+						'pl_area_pad' 		=> '0px',
+					),
 					'content'	=> array(
-						array( 'object'	=> 'iHeader' ),
+						array( 
+							'object'	=> 'WHPHeader',
+						),
 					)
 				)
 			)
@@ -79,15 +83,15 @@ class PageLinesInstallTheme extends PageLinesInstall{
 		$options_array = array(
 			'supersize_bg'					=> 0,
 			'content_width_px'				=> '1100px',
-			'linkcolor'						=> '#59B1F6',
-			'text_primary'					=> '#333333',
-			'bodybg'						=> '#ffffff',
+			'linkcolor'						=> '#B9191E',
+			'text_primary'					=> '#414141',
+			'bodybg'						=> '#F9F9F9',
 			'layout_mode'					=> 'pixel',
 			'layout_display_mode'			=> 'display-full',
-			'font_primary'					=> 'open_sans',
+			'font_primary'					=> 'georgia',
 			'base_font_size'				=> 14,
 			'font_primary_weight'			=> 400,
-			'font_headers'					=> 'brawler',
+			'font_headers'					=> 'georgia',
 			'header_base_size'				=> 16,
 			'font_headers_weight'			=> 300,
 			'region_disable_fixed'			=> 1
@@ -104,14 +108,14 @@ class PageLinesInstallTheme extends PageLinesInstall{
 	function map_templates_to_pages( ){
 		
 		$map = array(
-			//'is_404'	=> 'ibp-archive',
-			'tag'		=> 'ibp-archive',
-			'search'	=> 'ibp-archive',
-			'category'	=> 'ibp-archive',
-			'author'	=> 'ibp-archive',
-			'archive'	=> 'ibp-archive',
-			'blog'		=> 'ibp-blog',
-			'post'		=> 'ibp-post',
+			//'is_404'	=> 'whp-archive',
+			'tag'		=> 'whp-archive',
+			'search'	=> 'whp-archive',
+			'category'	=> 'whp-archive',
+			'author'	=> 'whp-archive',
+			'archive'	=> 'whp-archive',
+			'blog'		=> 'whp-blog',
+			'post'		=> 'whp-post',
 		);
 		
 		return $map;
@@ -127,10 +131,10 @@ class PageLinesInstallTheme extends PageLinesInstall{
 	function page_templates(){
 		
 		$templates = array(
-			'ibp-welcome' 		=> $this->template_welcome(), // default on install
-			'ibp-blog' 		=> $this->template_blog(),
-			'ibp-post' 		=> $this->template_post(),
-			'ibp-archive'	=> $this->template_archive()
+			'whp-welcome' 	=> $this->template_welcome(), // default on install
+			'whp-blog' 		=> $this->template_blog(),
+			'whp-post' 		=> $this->template_post(),
+			'whp-archive'	=> $this->template_archive()
 		);
 				
 		return $templates;
@@ -140,9 +144,9 @@ class PageLinesInstallTheme extends PageLinesInstall{
 	// Template Map
 	function template_welcome(){
 		
-		$template['key'] = 'ibp-welcome';
+		$template['key'] = 'whp-welcome';
 		
-		$template['name'] = 'iBlogPro | Welcome';
+		$template['name'] = 'WhiteHousePro | Welcome';
 		
 		$template['desc'] = 'Getting started guide &amp; template.';
 		
@@ -157,16 +161,17 @@ class PageLinesInstallTheme extends PageLinesInstall{
 				
 				'content'	=> array(
 					array(
-						'object'	=> 'iSlider',
+						'object'	=> 'WHPSlider',
 						'settings'	=> array(
-							'islider_array'	=> array(
+							'whpslider_array'	=> array(
 								array(
-									'image'			=> '[pl_child_url]/images/default.jpg',
-									'title'			=> 'Welcome to iBlogPro',
-									'text'			=> 'Inspired by modern technology, this Wordpress theme is the perfect way<br /> to give your website a look that is highly professional and clean.',
-									'element_color'	=> 'element-light',
-									'link'			=> home_url(),
-									'link_text'		=> 'View Your Blog ',
+									'image'         => 'http://themes.pagelines.com/whitehousepro/wp-content/uploads/sites/7/2014/08/slide1.jpg',
+				                    'button_color'  => 'whp-red',
+				                    'location'		=> 'slide-left',
+				                    'title'         => 'Welcome to WhiteHousePro',
+				                    'text'          => 'A sophisticated theme for Wordpress that makes a bold impression. Powered by PageLines DMS with drag-and-drop.',
+				                    'link'          => 'http://www.pagelines.com/',
+				                    'link_text'     => 'Visit PageLines.com',
 								),
 							)
 						)
@@ -211,9 +216,9 @@ class PageLinesInstallTheme extends PageLinesInstall{
 	// Template Map
 	function template_archive(){
 		
-		$template['key'] = 'ibp-archive';
+		$template['key'] = 'whp-archive';
 		
-		$template['name'] = 'iBlogPro | Archive Page';
+		$template['name'] = 'WhiteHousePro | Archive Page';
 		
 		$template['desc'] = 'Template for archives and other listings.';
 		
@@ -226,14 +231,13 @@ class PageLinesInstallTheme extends PageLinesInstall{
 
 				'content'	=> array(
 					array(
-						'object'	=> 'iSubheader',
+						'object'	=> 'PageLinesHighlight',
 						'settings'	=> array(
-							'ish_link'		=> 'http://www.pagelines.com/',
-							'ish_link_text'	=> 'PageLines',
+							'_highlight_head'	=> 'Archive',
 						),
 					),
 					array(
-						'object'	=> 'iBlog',
+						'object'	=> 'WHPBlog',
 					),
 				)
 			),
@@ -245,9 +249,9 @@ class PageLinesInstallTheme extends PageLinesInstall{
 	// Template Map
 	function template_blog(){
 		
-		$template['key'] = 'ibp-blog';
+		$template['key'] = 'whp-blog';
 		
-		$template['name'] = 'iBlogPro | Blog Page';
+		$template['name'] = 'WhiteHousePro | Blog Page';
 		
 		$template['desc'] = 'Used on blog pages.';
 		
@@ -260,14 +264,14 @@ class PageLinesInstallTheme extends PageLinesInstall{
 
 				'content'	=> array(
 					array(
-						'object'	=> 'iSubheader',
+						'object'	=> 'PageLinesHighlight',
 						'settings'	=> array(
-							'ish_link'		=> 'http://www.pagelines.com/',
-							'ish_link_text'	=> 'PageLines',
+							'_highlight_head'	=> 'Blog',
+							'_highlight_subhead' => 'Latest news from WhiteHousePro',
 						),
 					),
 					array(
-						'object'	=> 'iBlog',
+						'object'	=> 'WHPBlog',
 					),
 					array(
 						'object'	=> 'PageLinesPagination',
@@ -282,9 +286,9 @@ class PageLinesInstallTheme extends PageLinesInstall{
 	// Template Map
 	function template_post(){
 		
-		$template['key'] = 'ibp-post';
+		$template['key'] = 'whp-post';
 		
-		$template['name'] = 'iBlogPro | Single Post';
+		$template['name'] = 'WhiteHousePro | Single Post';
 		
 		$template['desc'] = 'Used on single post pages.';
 		
@@ -297,7 +301,7 @@ class PageLinesInstallTheme extends PageLinesInstall{
 
 				'content'	=> array(
 					array(
-						'object'	=> 'iBlog',
+						'object'	=> 'WHPBlog',
 					),
 					array(
 						'object'	=> 'PageLinesComments',
@@ -321,10 +325,10 @@ class PageLinesInstallTheme extends PageLinesInstall{
 			'post_type'		=> 'page',
 			'post_status'	=> 'draft',
 			'post_author'	=> $user_ID,
-			'post_title'	=> __( 'PageLines IblogPro Getting Started', 'pagelines' ),
+			'post_title'	=> __( 'PageLines WhiteHousePro Getting Started', 'pagelines' ),
 			'post_content'	=> $this->getting_started_content(),
 			'post_name'		=> 'pl-getting-started',
-			'template'		=> 'ibp-welcome',
+			'template'		=> 'whp-welcome',
 		);
 		
 		$post_data = wp_parse_args( $data, $page );
