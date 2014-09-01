@@ -17,8 +17,8 @@ add_filter ( 'pagelines_foundry', 'whitehousepro_google_fonts' );
 
 function whitehousepro_google_fonts($fonts){
     $fonts['whitehousepro-domine'] = array(
-	'name' => 'Domine Display',
-	'family' => 'Domine Display, serif',
+	'name' => 'Domine',
+	'family' => 'Domine, serif',
 	'web_safe' => false,
 	'google' => false,
 	'monospace' => false,
