@@ -170,7 +170,7 @@ class WHPBlog extends PageLinesSection {
 	}
 	
 	function posts_404(){
-		echo '404';
+		echo '<h2>404</h2>';
 	}
 	
 }
