@@ -3,7 +3,7 @@
 	Section: WhiteHousePro Header
 	Author: PageLines
 	Author URI: http://www.pagelines.com
-	Description: A stylized header with logo, search bar and navigation.
+	Description: A stylized header with Logo, Social Icons and Navigation.
 	Class Name: WHPHeader
 	Filter: nav,
 */
@@ -18,6 +18,18 @@ class WHPHeader extends PageLinesSection {
 
 	function section_opts(){
 
+		$social_urls = array(); 
+	
+		$social_icons = $this->social_icons();
+		
+		foreach($social_icons as $icon){
+			$social_urls[] = array(
+				'label'	=> ui_key($icon) . ' URL', 
+				'key'	=> 'whpheader_'.$icon,
+				'type'	=> 'text',
+				'scope'	=> 'global',
+			); 
+		}
 
 		$opts = array(
 			array(
@@ -49,13 +61,20 @@ class WHPHeader extends PageLinesSection {
 			array(
 				'type'	=> 'multi',
 				'key'	=> 'whpheader_social',
-				'title'	=> __( 'Search Bar', 'pagelines' ),
+				'title'	=> __( 'Social Icons', 'pagelines' ),
 				'col'	=> 1,
 				'opts'	=> array(
 					array(
-						'key'	=> 'whpheader_search',
-						'type'	=> 'check',
-						'label'	=> __( 'Hide Search?', 'pagelines' ),
+						'type'	=> 'multi',
+						'key'	=> 'whpheader_social_urls', 
+						'title'	=> 'Link URLs',
+						'opts'	=> $social_urls,
+					),
+					array(
+						'type'		=> 'check',
+						'key'		=> 'whpheader_social_disable',
+						'label'		=> __( 'Hide Social Icons?', 'pagelines' ),
+						'default'	=> false
 					),
 				)
 
@@ -87,6 +106,25 @@ class WHPHeader extends PageLinesSection {
 
 	}
 
+	function social_icons(){
+		
+		$social_icons = array(
+			'facebook',
+			'linkedin',
+			'instagram',
+			'twitter',
+			'youtube',
+			'google-plus',
+			'pinterest',
+			'dribbble',
+			'flickr',
+			'github',
+		); 
+		
+		return $social_icons;
+		
+	}
+
 	function section_styles(){
 
 		wp_enqueue_script( 'whpheader-custom', $this->base_url.'/whp.header.js',  array( 'jquery' ), pl_get_cache_key(), true );	
@@ -100,9 +138,9 @@ class WHPHeader extends PageLinesSection {
 
    		$hide_logo = ( $this->opt('whpheader_logo_disable') ) ? $this->opt('whpheader_logo_disable') : false;
 
-   		$hide_search = ( $this->opt('whpheader_search') ) ? true : false;
+   		$social_icons = $this->social_icons(); 
 
-   		$search = sprintf('%s', pagelines_search_form( false, 'whpheader-searchform') ); 
+   		$hide_social = ( $this->opt('whpheader_social_disable') ) ? $this->opt('whpheader_social_disable') : false;
 
 		$menu = ( $this->opt('whpheader_menu') ) ? $this->opt('whpheader_menu') : false;
 
@@ -122,7 +160,25 @@ class WHPHeader extends PageLinesSection {
 
 		<div class="span6 offset2">
 			
-			<?php if( ! $hide_search ) echo $search; ?>
+			<?php if( '1' !== $hide_social ): ?>
+
+				<div class="icons">
+
+					<?php 
+					
+					foreach($social_icons as $icon){
+					
+						$url = ( pl_setting('whpheader_'.$icon) ) ? pl_setting('whpheader_'.$icon) : false;
+					
+						if( $url )
+							printf('<a href="%s" class="whpheader-link" target="_blank"><i class="icon icon-%s"></i></a>', $url, $icon); 
+					}
+				
+					?>
+
+				</div>
+
+			<?php endif; ?>
 
 		</div>
 	</div>

@@ -6,15 +6,17 @@
             
              var whpSliderAutoplay = $(this).data('autoplay')
             ,   whpSliderSpeed = $(this).data('speed') || 4000
+            ,   whpSliderAnimation = $(this).data('animation')
+            ,   whpSliderDirectionNav = $(this).data('direction_nav')
             
             var whpSlider = $(this).find('.whp-slider').flexslider({
 
-                animation: "fade",
+                animation: whpSliderAnimation,
                 slideshow: whpSliderAutoplay,
                 slideshowSpeed: whpSliderSpeed,
                 animationSpeed: 500,
                 touch:  true,
-                directionNav: true,
+                directionNav: whpSliderDirectionNav,
                 controlNav: true,
                 keyboardNav: true,
                 

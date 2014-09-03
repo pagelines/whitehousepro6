@@ -114,7 +114,7 @@ class WHPBlog extends PageLinesSection {
 
 						<?php if( ! $hide_categories  ): ?>
 							<li class="post-categories">
-								<i class="icon icon-cloud"></i> <?php echo do_shortcode( '[post_categories]' ); ?>
+								<i class="icon icon-th-list"></i> <?php echo do_shortcode( '[post_categories]' ); ?>
 							</li>
 						<?php endif; ?>
 

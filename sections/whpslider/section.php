@@ -30,6 +30,21 @@ class WHPSlider extends PageLinesSection {
 			'type'	=> 'multi',
 			'opts'	=> array(
                 array(
+                    'key'     => 'animation',
+                    'label'   => __( 'Slide Animation', 'pagelines' ),
+                    'type'    => 'select',
+                    'opts'  => array(
+                        'fade'    => array('name'=> 'Fade (Default)'),
+                        'slide'   => array('name'=> 'Slide'),
+                    )
+                ),
+                array(
+                    'key'     => 'direction_nav',
+                    'type'    => 'check',
+                    'default' => 'true',
+                    'label'   => __( 'Show Navigation Arrows?', 'pagelines' ),
+                ),
+                array(
                     'key'           => 'autoplay',
                     'type'          => 'check',
                     'default'       => 'false',
@@ -82,17 +97,17 @@ class WHPSlider extends PageLinesSection {
                 array(
                     'key'   => 'link',
                     'label' => __( 'Primary Button Link (Optional)', 'pagelines' ),
-                    'type' 	=> 'text'
+                    'type' 	=> 'text_small'
                 ),
                 array(
                     'key'  	=> 'link_text',
                     'label'	=> __( 'Primary Button Text', 'pagelines' ),
-                    'type'  => 'text'
+                    'type'  => 'text_small'
                 ),
                 array(
                     'key'       => 'button_color',
                     'label'     => __( 'Primary Button Style', 'pagelines' ),
-                    'type'      => 'select',
+                    'type'      => 'select_button',
                     'default'   => 'whp-red',
                     'opts'      => array(
                         'whp-red'    => array('name'=> 'Red'),
@@ -102,12 +117,12 @@ class WHPSlider extends PageLinesSection {
                 array(
                     'key'   => 'link2',
                     'label' => __( 'Secondary Button Link (Optional)', 'pagelines' ),
-                    'type'  => 'text'
+                    'type'  => 'text_small'
                 ),
                 array(
                     'key'   => 'link_text2',
                     'label' => __( 'Secondary Button Text', 'pagelines' ),
-                    'type'  => 'text'
+                    'type'  => 'text_small'
                 ),
                 array(
                     'key'       => 'button_color2',
@@ -138,7 +153,7 @@ class WHPSlider extends PageLinesSection {
                 $the_img = pl_array_get( 'image', $slide );
 
                 if( $the_img ){
- 
+                    
                     $title = pl_array_get( 'title', $slide);
 
                     $text = pl_array_get( 'text', $slide); 
@@ -217,6 +232,10 @@ class WHPSlider extends PageLinesSection {
 
     function section_template( ) {
 
+        $whpslider_animation = ( $this->opt('animation') ) ? $this->opt('animation') : 'fade';
+
+        $whpslider_arrows = ( $this->opt('direction_nav') ) ? 'true' : 'false';
+
         $whpslider_autoplay = ( $this->opt('autoplay') ) ? 'true' : 'false';
 
 		$whpslider_speed = $this->opt('speed');
@@ -245,13 +264,15 @@ class WHPSlider extends PageLinesSection {
 
 
         printf('
-            <div class="pl-area-wrap whp-slider-wrap" data-autoplay="%s" data-speed="%s">
+            <div class="pl-area-wrap whp-slider-wrap" data-animation="%s" data-direction_nav="%s" data-autoplay="%s" data-speed="%s">
 				<div class="whp-slider flexslider">
             		<ul class="slides">
                     	%s
                     </ul>
 	            </div>
 			</div>',
+            $whpslider_animation,
+            $whpslider_arrows,
             $whpslider_autoplay,
             $whpslider_speed,
             $whpslides
