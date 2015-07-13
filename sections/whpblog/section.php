@@ -11,7 +11,7 @@
 
 class WHPBlog extends PageLinesSection {
 
-	
+
 	function before_section_template( $location = '' ) {
 
 		global $wp_query;
@@ -22,7 +22,7 @@ class WHPBlog extends PageLinesSection {
 	}
 
 	function section_opts(){
-		
+
 		$options = array();
 
 		$options[] = array(
@@ -57,21 +57,21 @@ class WHPBlog extends PageLinesSection {
 		);
 
 		return $options;
-		
+
 	}
 
 	/**
 	* Section template.
 	*/
    function section_template() {
-	
+
 		if( have_posts() )
 			while ( have_posts() ) : the_post();  $this->get_article(); endwhile;
 		else
 			$this->posts_404();
-	
+
 	}
-	
+
 	function get_article(){
 		$format = get_post_format();
 
@@ -82,26 +82,26 @@ class WHPBlog extends PageLinesSection {
 		$hide_date = ( $this->opt('hide_date') ) ? $this->opt('hide_date') : false;
 
 		$hide_categories = ( $this->opt('hide_categories') ) ? $this->opt('hide_categories') : false;
-		
+
 		$gallery_format = get_post_meta( get_the_ID(), '_pagelines_gallery_slider', true);
 
 		$class[ ] = ( ! empty( $gallery_format ) ) ? 'use-flex-gallery' : '';
-		
+
 		$classes = apply_filters( 'pagelines_get_article_post_classes', join( " ", $class) );
-		
+
 		?>
 		<div class="row fix">
 			<div class="span12">
-				
+
 				<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 					<header class="post-header">
 						<?php if( ! $linkbox  ): ?>
-							<h2 class="title"><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h2>
+							<h1 class="title"><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h1>
 						<?php endif; ?>
 					</header>
 
 					<ul class="post-meta">
-						
+
 						<?php if( ! $hide_author  ): ?>
 							<li class="author-name">by <?php echo get_the_author(); ?></li>
 						<?php endif; ?>
@@ -128,18 +128,18 @@ class WHPBlog extends PageLinesSection {
 					</ul>
 
 					<?php
-						$media = pagelines_media( array( 'thumb-size' => 'aspect-thumb' ) ); 
-						
+						$media = pagelines_media( array( 'thumb-size' => 'aspect-thumb' ) );
+
 						if( ! empty( $media ) )
 							printf( '<div class="metamedia">%s</div>', $media );
-					
+
 					?>
 
-				
+
 					<?php if( ! $linkbox || is_single() ): ?>
 						<div class="content">
-							<?php 
-								if( ! is_single() ) 
+							<?php
+								if( ! is_single() )
 									echo get_the_excerpt();
 								else{
 									the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'pagelines' ) );
@@ -151,9 +151,9 @@ class WHPBlog extends PageLinesSection {
 										'link_after'  => '</span>',
 									) );
 								}
-									
+
 							?>
-							
+
 						</div>
 					<?php endif; ?>
 					<div class="the-footer fix">
@@ -161,16 +161,16 @@ class WHPBlog extends PageLinesSection {
 								<a href="<?php the_permalink(); ?>" class="read-more">Continue Reading...</a>
 							<?php else: ?>
 								<?php previous_post_link('%link', 'Next article: %title') ?>
-							<?php endif; ?>						
+							<?php endif; ?>
 					</div>
 				</article>
 			</div>
 		</div>
-		<?php 
+		<?php
 	}
-	
+
 	function posts_404(){
 		echo '<h2>404</h2>';
 	}
-	
+
 }
