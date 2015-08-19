@@ -40,3 +40,15 @@ function woo_shop_page_title( $page_title ) {
 }
 
 remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);
+
+/**
+ * Fix uploader issues with DMS2 and WP 4.3 jQuery temporary patch
+ */
+add_action( 'wp_enqueue_scripts', 'fix_jquery_for_dms_theme' );
+function fix_jquery_for_dms_theme() {
+	if( ! is_admin() && function_exists( 'pl_draft_mode' ) && pl_draft_mode() ){
+		wp_deregister_script('jquery');
+		wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"), false, '1.11.2');
+		wp_enqueue_script('jquery');
+	}
+}
